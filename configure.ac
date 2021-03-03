@@ -2476,6 +2476,7 @@ AS_CASE([$rb_cv_coroutine], [yes|''], [
             AC_CHECK_FUNCS([getcontext],
                 [rb_cv_coroutine=ucontext]
             )
+        ],
         [
             AC_CHECK_FUNCS([getcontext swapcontext makecontext],
                 [rb_cv_coroutine=ucontext],
