@@ -2472,9 +2472,13 @@ AS_CASE([$rb_cv_coroutine], [yes|''], [
         [*-emscripten*], [
             rb_cv_coroutine=emscripten
         ],
+        [s390x-linux*], [
+            AC_CHECK_FUNCS([getcontext],
+                [rb_cv_coroutine=ucontext]
+            )
         [
             AC_CHECK_FUNCS([getcontext swapcontext makecontext],
-                [rb_cv_coroutine=ucontext; break],
+                [rb_cv_coroutine=ucontext],
                 [rb_cv_coroutine=copy; break]
             )
         ]
